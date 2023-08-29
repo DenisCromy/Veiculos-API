@@ -1,6 +1,6 @@
 import mysql from 'mysql2/promise';
 
-const conexao = await mysql.createConnection({
+const con = await mysql.createConnection({
     host: process.env.HOST,
     database: process.env.DB,
     user: process.env.USER,
@@ -8,4 +8,4 @@ const conexao = await mysql.createConnection({
 })
 
 console.log('BD conectado com sucesso');
-export {conexao};
+export {con};
