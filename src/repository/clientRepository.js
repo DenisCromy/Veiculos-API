@@ -67,4 +67,20 @@ export async function AlterarCliente(id, cliente){
 
     return resp.affectedRows;
 
-}
+};
+
+export async  function consultar(nome) {
+    let comando = `
+        select id_cliente       as id,
+               nm_cliente       as nome,
+               ds_cpf           as cpf,
+               ds_telefone      as telefone,
+               ds_email         as email,
+               ds_cnh           as cnh
+          from tb_cliente
+         where nm_cliente like  ?
+    `
+  
+    let [dados] = await con.query(comando, ['%' + nome + '%'])
+    return dados;
+  }
