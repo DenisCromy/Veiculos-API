@@ -83,4 +83,4 @@ export async  function consultar(nome) {
   
     let [dados] = await con.query(comando, ['%' + nome + '%'])
     return dados;
-  }
+};

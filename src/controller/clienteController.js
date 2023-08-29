@@ -1,7 +1,28 @@
 import { Router } from "express";
-import { AlterarCliente, ExbirClientes, InserirCliente } from "../repository/clientRepository.js";
+import {
+
+    AlterarCliente, 
+    ExbirClientes,
+    InserirCliente,
+    consultar 
+    
+    } from "../repository/clientRepository.js";
 
 const server = Router();
+
+server.get('/cliente/busca', async(req, resp) => {
+    try {
+        const nome = req.query.nome;
+        const res = await consultar(nome);
+        resp.send(res);
+      }
+      catch (err) {
+        resp.status(500).send({ erro: 'Ocorreu um erro!' });
+      }
+
+
+})
+
 
 server.put('/cliente/:id', async (req, resp) =>{
     
